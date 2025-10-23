@@ -4,6 +4,7 @@
  * Created on: Sep 2025
  * This program shows a neopixel strip
 */
+
 //variables
 
 let amountOfLight: number
