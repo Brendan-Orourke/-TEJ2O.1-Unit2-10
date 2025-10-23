@@ -6,7 +6,6 @@
 */
 
 //variables
-
 let amountOfLight: number
 let neopixelStrip: neopixel.Strip = null
 
@@ -69,6 +68,4 @@ input.onButtonPressed(Button.A, function () {
     basic.clearScreen()
     basic.showIcon(IconNames.Happy)
 })
-
-
 
