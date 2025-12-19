@@ -5,66 +5,72 @@
  * This program shows a neopixel strip
 */
 
-//variables
-let amountOfLight: number
-let neopixelStrip: neopixel.Strip = null
+// variables
+let lightLevelOfMicrobit: number = 0
+let xandersNeopixelStrip: neopixel.Strip = null
 
-//cleanup
+// setup
 basic.clearScreen()
-neopixelStrip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
-neopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.Black))
-neopixelStrip.setPixelColor(1, neopixel.colors(NeoPixelColors.Black))
-neopixelStrip.setPixelColor(2, neopixel.colors(NeoPixelColors.Black))
-neopixelStrip.setPixelColor(3, neopixel.colors(NeoPixelColors.Black))
-neopixelStrip.show()
+lightLevelOfMicrobit = input.lightLevel()
+xandersNeopixelStrip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
+xandersNeopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.Black))
+xandersNeopixelStrip.setPixelColor(1, neopixel.colors(NeoPixelColors.Black))
+xandersNeopixelStrip.setPixelColor(2, neopixel.colors(NeoPixelColors.Black))
+xandersNeopixelStrip.setPixelColor(3, neopixel.colors(NeoPixelColors.Black))
+xandersNeopixelStrip.show()
 basic.showIcon(IconNames.Happy)
 
-// light up leds
 input.onButtonPressed(Button.A, function () {
     // get light level
-    amountOfLight = input.lightLevel()
-
-    // show light level
-    basic.clearScreen()
-    basic.showNumber(amountOfLight)
-
-    if (amountOfLight <= 51) {
-        // show nothing
-    }
-
-    // light up 1 led
-    if (amountOfLight > 52) {
-        neopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.White))
-    }
-
-    // light up 2 leds
-    if (amountOfLight > 104) {
-        neopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.White))
-        neopixelStrip.setPixelColor(1, neopixel.colors(NeoPixelColors.White))
-    }
-
-    // light up 3 leds
-    if (amountOfLight > 156) {
-        neopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.White))
-        neopixelStrip.setPixelColor(1, neopixel.colors(NeoPixelColors.White))
-        neopixelStrip.setPixelColor(2, neopixel.colors(NeoPixelColors.White))
-    }
-
-    // light up 4 leds
-    if (amountOfLight > 208) {
-        neopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.White))
-        neopixelStrip.setPixelColor(1, neopixel.colors(NeoPixelColors.White))
-        neopixelStrip.setPixelColor(2, neopixel.colors(NeoPixelColors.White))
-        neopixelStrip.setPixelColor(3, neopixel.colors(NeoPixelColors.White))
-    }
-
-    neopixelStrip.show()
-    basic.pause(2000)
-    neopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.Black))
-    neopixelStrip.setPixelColor(1, neopixel.colors(NeoPixelColors.Black))
-    neopixelStrip.setPixelColor(2, neopixel.colors(NeoPixelColors.Black))
-    neopixelStrip.setPixelColor(3, neopixel.colors(NeoPixelColors.Black))
-    neopixelStrip.show()
-    basic.clearScreen()
+    lightLevelOfMicrobit = input.lightLevel()
     basic.showIcon(IconNames.Happy)
+    basic.clearScreen()
+    basic.showString("" + lightLevelOfMicrobit.toString())
+
+    // checks lightLevel and turns on neopixels
+    if (lightLevelOfMicrobit <= 51) {
+        xandersNeopixelStrip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
+        xandersNeopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.Black))
+        xandersNeopixelStrip.show()
+        basic.showIcon(IconNames.Yes)
+    }
+
+    if (lightLevelOfMicrobit > 52) {
+        // turns on one neopixel
+        xandersNeopixelStrip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
+        xandersNeopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.Green))
+        xandersNeopixelStrip.show()
+        basic.showIcon(IconNames.Yes)
+    }
+
+    if (lightLevelOfMicrobit > 104) {
+        // turns on two neopixels
+        xandersNeopixelStrip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
+        xandersNeopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.Green))
+        xandersNeopixelStrip.setPixelColor(1, neopixel.colors(NeoPixelColors.Green))
+        xandersNeopixelStrip.show()
+        basic.showIcon(IconNames.Yes)
+    }
+
+    if (lightLevelOfMicrobit > 156) {
+        // turns on three neopixels
+        xandersNeopixelStrip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
+        xandersNeopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.Green))
+        xandersNeopixelStrip.setPixelColor(1, neopixel.colors(NeoPixelColors.Green))
+        xandersNeopixelStrip.setPixelColor(2, neopixel.colors(NeoPixelColors.Green))
+        xandersNeopixelStrip.show()
+        basic.showIcon(IconNames.Yes)
+    }
+
+    if (lightLevelOfMicrobit > 208) {
+        // turns on four neopixels
+        xandersNeopixelStrip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
+        xandersNeopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.Green))
+        xandersNeopixelStrip.setPixelColor(1, neopixel.colors(NeoPixelColors.Green))
+        xandersNeopixelStrip.setPixelColor(2, neopixel.colors(NeoPixelColors.Green))
+        xandersNeopixelStrip.setPixelColor(3, neopixel.colors(NeoPixelColors.Green))
+        xandersNeopixelStrip.show()
+        basic.showIcon(IconNames.Yes)
+    }
+
 })
