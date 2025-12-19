@@ -1,7 +1,7 @@
 /* Copyright (c) 2020 MTHS All rights reserved
  *
  * Created by: Brendan ORourke
- * Created on: Sep 2025
+ * Created on: dec 2025
  * This program shows a neopixel strip
 */
 
